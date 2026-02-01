@@ -1,5 +1,102 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(243, 245, 252);
+}
+#NavBar{
+    width: 100%;
+    height: 70px;
+    /* justify-content: center; */
+    padding-left: 100px;
+    align-items: center;
+    display: flex;
+}
+#loginPage{
+    position: relative;
+    height: 100vh;
+}
+#eliment{
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    /* background-color: #22c55e; */
+}
+#logo-box{
+    display: flex;
+    height: 100%;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logotxt{
+margin-left: 10px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;  
+
+}
+#loginSection{
+
+}
+.label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-left: 4px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 0.75rem;
+}
+
+.input-group input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.valid-icon {
+    color: #22c55e;
+}
+
+.btn-primary {
+    flex: 1;
+    background: rgb(224, 56, 73);
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.btn-primary:hover {
+    background: rgb(199, 40, 56);
+}
+
+.btn-secondary {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    background: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+/* responship */
+@media screen and (max-width: 1200px) {
+#eliment {
+      display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+#NavBar{
+    display: none;
+}
 }
