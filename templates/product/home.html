@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Home</title>
+    <link rel="stylesheet" href="{% static 'css/product/home.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">Nexo</div>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <nav class="desktop-nav">
+            {% comment %} <a href="{% url "dashboard" %}" class="nav-item">Home</a> {% endcomment %}
+            <a href="{% url "login" %}" class="nav-item">Seller Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Elevate Your Lifestyle</h1>
+            <p>Discover our curated collection of premium essentials.</p>
+            <a class="cta-button" href="{% url "registration" %}">Sell Your Products</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <h2 class="section-title">Latest Arrivals</h2>
+            <div id="product-grid" class="product-grid">
+                </div>
+            <div id="no-results" class="no-results hidden">
+                <h3>No products found matching your search.</h3>
+            </div>
+        </div>
+    </main>
+    <nav class="bottom-nav">
+        <a href="{% url "dashboard" %}" class="bottom-nav-item">
+            <span class="icon">⌂</span>
+            <span class="label">Home</span>
+        </a>
+        <a href="{% url "login" %}" class="bottom-nav-item">
+            <span class="icon">👤</span>
+            <span class="label">Seller Login</span>
+        </a>
+    </nav>
+
+    <footer>
+        <p>&copy; Nexo Shop. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static "js/product/home.js" %}"></script>
+</body>
+</html>

@@ -1,6 +1,14 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class SellerProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=15)
+
+class Seller(AbstractUser):
+    name=models.CharField(max_length=30)
+    email=models.EmailField(max_length=254)
+    phone = models.CharField(max_length=15, unique=True)
+    address=models.CharField(max_length=200)
+    id_proof= models.ImageField(upload_to="seller/id_proof")
     is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username

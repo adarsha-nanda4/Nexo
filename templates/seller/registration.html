@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller | Registration</title>
+    <link rel="stylesheet" href="{% static "css/seller/registration.css" %}">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="brand-logo">Nexo Seller</div>
+            <div class="desktop-links">
+            <a href="{% url "dashboard" %}" class="nav-item">Home</a>
+            <a href="{% url "login" %}" class="nav-item">Seller Login</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="register-card">
+            <div class="card-header">
+                <h2>Become a Seller</h2>
+                <p>Register as a seller. Your account will be verified by admin before activation.</p>
+            </div>
+            
+            <div id="main-error-message" class="main-error-message" aria-live="polite">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="error-message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form id="register-form" action="{% url "registration" %}" method="post"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Name name" required>
+                    <div class="error-text"></div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g., 9876543210"  required>
+                        <div class="error-text"></div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="email@email.email"  required>
+                    <div class="error-text"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3" placeholder="Enter full address (Hostelers add hostel details)" required></textarea>
+                    <div class="error-text"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="id_proof">ID Proof (Image)</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="id_proof" name="id_proof" accept="image/*" required>
+                        <span class="file-custom">Choose file...</span>
+                    </div>
+                    <small class="helper-text">Upload College ID (JPG, PNG). Max 5MB.</small>
+                    <div class="error-text"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Create password" autocomplete="new-password" required>
+                            <button type="button" class="toggle-btn" data-target="password">Show</button>
+                        </div>
+                        <div class="error-text"></div>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Register as a Seller</button>
+            </form>
+
+            <div class="card-footer">
+                <p>Already a seller? <a href="{% url "login" %}" class="link-primary">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="{% url "dashboard" %}" class="bottom-nav-item">
+            <span class="icon">⌂</span>
+            <span class="label">Home</span>
+        </a>
+        <a href="{% url "login" %}" class="bottom-nav-item">
+            <span class="icon">👤</span>
+            <span class="label">Seller Login</span>
+        </a>
+    </nav>
+
+</body>
+</html>

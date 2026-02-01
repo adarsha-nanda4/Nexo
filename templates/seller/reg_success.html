@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="{% static "css/seller/reg_success.css" %}">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="brand-logo">Nexo Seller</div>
+            <div class="desktop-links">
+            <a href="{% url "dashboard" %}" class="nav-item">Home</a>
+            <a href="{% url "login" %}" class="nav-item">Seller Login</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="success-card">
+            <div class="icon-container">
+                <span class="checkmark">✔</span>
+            </div>
+            
+            <h1 class="success-title">Registration Successful</h1>
+            
+            <p class="success-message">
+                Your registration has been completed successfully.
+            </p>
+            
+            <div class="info-box">
+                <span class="info-icon">ⓘ</span>
+                <p class="info-text">
+                    Your account will be reviewed and verified by the admin before activation. You will be notified once approved.
+                </p>
+            </div>
+
+            <div class="action-buttons">
+                {% comment %} <a id="login-btn" class="btn btn-secondary" href="{% url "" %}">Go to Login</a> {% endcomment %}
+                <a id="home-btn" class="btn btn-primary" href="{% url "dashboard" %}">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="{% url "dashboard" %}" class="bottom-nav-item">
+            <span class="icon">⌂</span>
+            <span class="label">Home</span>
+        </a>
+        <a href="{% url "login" %}" class="bottom-nav-item">
+            <span class="icon">👤</span>
+            <span class="label">Seller Login</span>
+        </a>
+    </nav>
+
+    <script src="{% static "js/seller/reg_success" %}"></script>
+</body>
+</html>
