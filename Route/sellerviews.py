@@ -39,3 +39,5 @@ def registration(request):
 
     return render(request,"seller/registration.html")
 
+def profile(request):
+    return render(request,"seller/profile.html")

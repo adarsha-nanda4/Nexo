@@ -34,7 +34,34 @@
         <div class="container">
             <h2 class="section-title">Latest Arrivals</h2>
             <div id="product-grid" class="product-grid">
+                {% for product in products %}
+                <a href="{% url 'product_detail' product.id %}">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="{{product.image.url}}" alt="{{product.title}}" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-title">{{product.title}}</h3>
+                        {% comment %} <div class="product-rating">${getStars(product.rating)} (${product.rating})</div> {% endcomment %}
+                        <div class="card-footer">
+                            <span class="price">{{product.price}}</span>
+                            <a href="tel:{{ product.seller.phone }}" class="btn btn-call">
+                                <span class="icon">📞</span> Call Seller
+                            </a>
+                            
+                            <a 
+                            href="https://wa.me/{{ product.seller.phone }}?text=Hi! I am interested in the product: {{product.title}} for ₹{{product.price}} Could you please share more details like availability, condition, and delivery options? Thank you! " 
+                            class="btn btn-whatsapp" 
+                            target="_blank"
+                            >
+                                <span class="icon">💬</span> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                </a>
+                {% endfor %}
+            </div>
             <div id="no-results" class="no-results hidden">
                 <h3>No products found matching your search.</h3>
             </div>
@@ -55,6 +82,6 @@
         <p>&copy; Nexo Shop. All rights reserved.</p>
     </footer>
 
-    <script src="{% static "js/product/home.js" %}"></script>
+    {% comment %} <script src="{% static "js/product/home.js" %}"></script> {% endcomment %}
 </body>
 </html>
