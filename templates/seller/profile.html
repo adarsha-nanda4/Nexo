@@ -1,157 +1,186 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seller Dashboard | {{ seller.name }}</title>
-    <link rel="stylesheet" href="{% static 'css/seller/profile.css' %}">
-</head>
-<body>
-
+    <link rel="stylesheet" href="{% static 'css/seller/profile.css' %}" />
+  </head>
+  <body>
     <header class="top-nav">
-        <div class="nav-container">
-            <div class="brand-logo">Nexo Seller</div>
-            <div class="desktop-links">
-                <a href="{% url 'dashboard' %}" class="nav-link">Marketplace</a>
-                <a href="#" class="nav-link active">Dashboard</a>
-                <a href="{% url 'logout' %}" class="nav-link logout-link">Logout</a>
-            </div>
+      <div class="nav-container">
+        <div class="brand-logo">Nexo Seller</div>
+        <div class="desktop-links">
+          <a href="{% url 'dashboard' %}" class="nav-link">Marketplace</a>
+          <a href="#" class="nav-link active">Dashboard</a>
+          <a href="{% url 'logout' %}" class="nav-link logout-link">Logout</a>
         </div>
+      </div>
     </header>
 
     <div class="dashboard-wrapper">
-        
-        <section class="profile-section">
-            <div class="section-header">
-                <h2>Seller Profile</h2>
-                <div class="verification-badge-wrapper">
-                    {% if seller.is_verified %}
-                        <span class="badge badge-verified">✓ Verified Seller</span>
+      <section class="profile-section">
+        <div class="section-header">
+          <h2>Seller Profile</h2>
+          <div class="verification-badge-wrapper">
+            {% if seller.is_verified %}
+            <span class="badge badge-verified">✓ Verified Seller</span>
+            {% else %}
+            <span class="badge badge-pending">⚠ Pending Verification</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <form method="POST" action="" class="profile-form">
+          {% csrf_token %}
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                value="{{ seller.username }}"
+                disabled
+                class="input-disabled"
+              />
+              <small class="helper-text">Username cannot be changed.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Business / Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ seller.name }}"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value="{{ seller.phone }}"
+                required
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="address">Business Address</label>
+              <textarea id="address" name="address" rows="3" required>
+{{ seller.address }}</textarea
+              >
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="products-section">
+        <div class="section-header">
+          <h2>My Products</h2>
+          <a href="" class="btn btn-success">
+            <span class="icon">+</span> Add New Product
+          </a>
+        </div>
+
+        <div class="table-container">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product Details</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in products %}
+              <tr>
+                <td data-label="Image">
+                  <div class="thumb-wrapper">
+                    {% if p.image %}
+                    <img
+                      src="{{ p.image.url }}"
+                      alt="{{ p.title }}"
+                      class="product-thumb"
+                    />
                     {% else %}
-                        <span class="badge badge-pending">⚠ Pending Verification</span>
+                    <div class="no-thumb">No Img</div>
                     {% endif %}
-                </div>
-            </div>
+                  </div>
+                </td>
+                <td data-label="Product Details">
+                  <div class="product-meta">
+                    <span class="p-title">{{ p.title }}</span>
+                    <span class="p-date"
+                      >Added: {{ p.created_at|date:"M d, Y" }}</span
+                    >
+                  </div>
+                </td>
+                <td data-label="Price" class="p-price">{{ p.price }}</td>
+                <td data-label="Stock">
+                  {% if p.stock > 0 %}
+                  <span class="status-dot green"></span> {{ p.stock }} in stock
+                  {% else %} <span class="status-dot red"></span> Out of Stock
+                  {% endif %}
+                </td>
+                <td data-label="Actions">
+                  <div class="action-buttons">
+                    <a href="" class="btn-icon edit" aria-label="Edit">
+                      ✎ Edit
+                    </a>
 
-            <form method="POST" action="" class="profile-form">
-                {% csrf_token %}
-                
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" value="{{ seller.username }}" disabled class="input-disabled">
-                        <small class="helper-text">Username cannot be changed.</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Business / Full Name</label>
-                        <input type="text" id="name" name="name" value="{{ seller.name }}" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" value="{{ seller.phone }}" required>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="address">Business Address</label>
-                        <textarea id="address" name="address" rows="3" required>{{ seller.address }}</textarea>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-            </form>
-        </section>
-
-        <section class="products-section">
-            <div class="section-header">
-                <h2>My Products</h2>
-                <a href="" class="btn btn-success">
-                    <span class="icon">+</span> Add New Product
-                </a>
-            </div>
-
-            <div class="table-container">
-                <table class="products-table">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Product Details</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for p in products %}
-                        <tr>
-                            <td data-label="Image">
-                                <div class="thumb-wrapper">
-                                    {% if p.image %}
-                                        <img src="{{ p.image.url }}" alt="{{ p.title }}" class="product-thumb">
-                                    {% else %}
-                                        <div class="no-thumb">No Img</div>
-                                    {% endif %}
-                                </div>
-                            </td>
-                            <td data-label="Product Details">
-                                <div class="product-meta">
-                                    <span class="p-title">{{ p.title }}</span>
-                                    <span class="p-date">Added: {{ p.created_at|date:"M d, Y" }}</span>
-                                </div>
-                            </td>
-                            <td data-label="Price" class="p-price">{{ p.price }}</td>
-                            <td data-label="Stock">
-                                {% if p.stock > 0 %}
-                                    <span class="status-dot green"></span> {{ p.stock }} in stock
-                                {% else %}
-                                    <span class="status-dot red"></span> Out of Stock
-                                {% endif %}
-                            </td>
-                            <td data-label="Actions">
-                                <div class="action-buttons">
-                                    <a href="" class="btn-icon edit" aria-label="Edit">
-                                        ✎ Edit
-                                    </a>
-                                    
-                                    <form method="POST" action="{% url 'seller_product_delete' p.id %}" class="delete-form">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn-icon delete" aria-label="Delete">
-                                            🗑 Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="5" class="empty-state">
-                                <p>You haven't added any products yet.</p>
-                                <a href="" class="link-add">Add your first product</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
+                    <form
+                      method="POST"
+                      action="{% url 'seller_product_delete' p.id %}"
+                      class="delete-form"
+                    >
+                      {% csrf_token %}
+                      <button
+                        type="submit"
+                        class="btn-icon delete"
+                        aria-label="Delete"
+                      >
+                        🗑 Delete
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" class="empty-state">
+                  <p>You haven't added any products yet.</p>
+                  <a href="" class="link-add">Add your first product</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
 
     <nav class="bottom-nav">
-        <a href="{% url 'dashboard' %}" class="bottom-nav-item">
-            <span class="icon">⌂</span>
-            <span class="label">Home</span>
-        </a>
-        <a href="#" class="bottom-nav-item active">
-            <span class="icon">👤</span>
-            <span class="label">Profile</span>
-        </a>
+      <a href="{% url 'dashboard' %}" class="bottom-nav-item">
+        <span class="icon">⌂</span>
+        <span class="label">Home</span>
+      </a>
+      <a href="#" class="bottom-nav-item active">
+        <span class="icon">👤</span>
+        <span class="label">Profile</span>
+      </a>
     </nav>
 
     <script src="{% static 'js/seller/profile.js' %}"></script>
-</body>
+  </body>
 </html>
