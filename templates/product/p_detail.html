@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nexo Red Direct Contact Details</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-32 lg:pb-0">
+    <div
+        class="sticky top-0 z-50 flex items-center bg-white/90 dark:bg-background-dark/90 backdrop-blur-md p-4 justify-between border-b border-gray-100 dark:border-gray-800 lg:px-8">
+        <div class="text-[#181111] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+            <a href="{% url "dashboard" %}"> 
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+            </a>
+        </div>
+        <h2
+        class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">
+        Product Details</h2>
+        <div class="flex w-12 items-center justify-end">
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#181111] dark:text-white gap-2 text-base font-bold leading-normal p-0" onclick="if (navigator.share) { navigator.share({ title: document.title, url: window.location.href }); } else { alert('Sharing is not supported on this browser.'); }">
+            <span class="material-symbols-outlined">share</span>
+            </button>
+        </div>
+    </div>
+    <main class="mx-auto w-full max-w-7xl px-4 lg:px-8 py-4 lg:py-8">
+        <div class="flex flex-col lg:flex-row lg:gap-12">
+            <div class="w-full lg:w-1/2">
+                <div class="@container">
+                    <div class="@[480px]:px-0 @[480px]:py-0">
+                        <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-white rounded-lg min-h-80 lg:min-h-[500px] shadow-sm"
+                            data-alt="Modern high-end red electronic gadget on a clean white surface"
+                            style="background-image: url('{{ product.image.url }}');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col">
+                <div class="pt-6 lg:pt-0">
+                    <div class="flex gap-2 flex-wrap mb-4">
+                        <div
+                            class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 px-3">
+                            <p class="text-primary text-xs font-bold leading-normal uppercase tracking-wider">
+                                {{product.category}}</p>
+                        </div>
+                        {% comment %} <div
+                            class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-100 dark:bg-gray-800 px-3">
+                            <p class="text-gray-600 dark:text-gray-400 text-xs font-medium leading-normal uppercase">New
+                                Arrival</p>
+                        </div> {% endcomment %}
+                    </div>
+                    <h1
+                        class="text-[#181111] dark:text-white tracking-tight text-[28px] lg:text-4xl font-bold leading-tight font-display mb-2">
+                        {{product.title}}</h1>
+                    <h2
+                        class="text-primary tracking-tight text-[32px] lg:text-3xl font-bold leading-tight font-display mb-6">
+                        ₹{{product.price}}</h2>
+                    <div class="flex flex-row gap-3 mt-2 mb-8">
+                        <a class="flex-1 max-w-[200px] flex items-center justify-center h-10 rounded-lg bg-primary text-white text-sm font-semibold shadow-md shadow-primary/30 transition-all active:scale-95 gap-2 hover:bg-red-700" href="tel:{{ product.seller.phone }}">
+                            <span class="material-symbols-outlined text-[20px]">call</span>
+                            Phone
+                        </a>
+                        <a class="flex-1 max-w-[200px] flex items-center justify-center h-10 rounded-lg bg-[#25D366] text-white text-sm font-semibold shadow-md shadow-[#25D366]/30 transition-all active:scale-95 gap-2 hover:bg-[#20bd5a]" href="https://wa.me/{{ product.seller.phone }}?text=Hi! I am interested in the product: {{product.title}} for ₹{{product.price}} Could you please share more details like availability, condition, and delivery options? Thank you! " >
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z">
+                                </path>
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                    <div class="py-6 border-t border-b border-gray-100 dark:border-gray-800">
+                        <h3 class="text-[#181111] dark:text-white text-lg font-bold mb-2">Description</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed lg:text-base">
+                            {{product.description}}
+                        </p>
+                        <div class="flex items-center gap-2 mt-4 text-gray-400 text-xs">
+                            <span class="material-symbols-outlined text-sm">schedule</span>
+                            <p>Listed On: {{ product.created_at|date:"d F Y" }}</p>
+                        </div>
+                    </div>
+                    <div class="py-6">
+                        <h3 class="text-[#181111] dark:text-white text-lg font-bold mb-4">Seller Information</h3>
+                        <div
+                            class="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 w-full lg:max-w-md">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="size-12 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-[#181111] dark:text-white font-bold text-base">
+                                        {{product.seller.name}}</p>
+                                    <p class="text-gray-500 text-xs">Verified Seller</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">mail</span>
+                                    <p class="text-gray-700 dark:text-gray-300 text-sm break-all">
+                                        {{product.seller.email}}
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">call</span>
+                                    <p class="text-gray-700 dark:text-gray-300 text-sm">+91 {{product.seller.phone}}</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+                                    <p class="text-gray-700 dark:text-gray-300 text-sm">{{product.seller.address}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav
+        class="fixed bottom-0 left-0 z-50 w-full bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 pb-safe">
+        <div class="flex h-16 items-center justify-around px-8">
+            <a href="{% url "dashboard" %}">
+                <button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+                    <span class="material-symbols-outlined fill-current text-[28px]">home</span>
+                    <span class="text-[10px] font-bold">Home</span>
+                </button>
+            </a>
+            <a href="{% url "login" %}">
+                <button
+                    class="flex flex-col items-center justify-center gap-1 w-full h-full text-[#617589] dark:text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-[28px]">person</span>
+                    <span class="text-[10px] font-medium">Account</span>
+                </button>
+            </a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

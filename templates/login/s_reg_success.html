@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Seller Registration Success</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-[#181111] dark:text-white transition-colors duration-200">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Main Content Area: Centered Vertically and Horizontally -->
+        <main class="flex flex-1 flex-col justify-center items-center p-6 w-full max-w-md mx-auto">
+            <!-- Success Illustration/Icon -->
+            <div class="flex flex-col items-center justify-center mb-8 animate-fade-in-up">
+                <div
+                    class="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-[64px] leading-none">
+                        check_circle
+                    </span>
+                </div>
+                <!-- Headline -->
+                <h1
+                    class="text-2xl md:text-[32px] font-bold leading-tight text-center text-[#181111] dark:text-white tracking-tight">
+                    Your registration has been completed successfully.
+                </h1>
+            </div>
+            <!-- Info Card -->
+            <div class="w-full mb-8">
+                <div
+                    class="bg-white dark:bg-[#2a1515] p-5 rounded-xl border border-[#e5e0e0] dark:border-[#3a1f1f] shadow-sm flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-2xl">
+                                info
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <h3 class="text-base font-bold text-[#181111] dark:text-white leading-tight">Pending Review</h3>
+                        <p class="text-[#5c4040] dark:text-[#ccb0b0] text-sm font-normal leading-relaxed">
+                            Your account will be reviewed and verified by the admin before activation. You will be
+                            notified once approved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Spacer to push button to bottom on mobile if needed, or keep centered -->
+            <div class="flex-grow md:flex-grow-0"></div>
+            <!-- Primary Action Button -->
+            <div class="w-full mt-auto md:mt-0 pb-4 md:pb-0">
+                <a href="{% url "dashboard" %}"
+                    class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary hover:bg-red-700 active:scale-95 transition-all text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-primary/20">
+                    <span class="truncate">Back to Home</span>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

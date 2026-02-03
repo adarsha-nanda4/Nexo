@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>All Products Listing Page</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E53935",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-[80px]">
+        <header
+            class="sticky top-0 z-50 bg-white/95 dark:bg-[#101922]/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+            <div class="flex items-center justify-start px-4 h-14 gap-5">
+                <a href="{% url "dashboard" %}">
+                <button
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#111418] dark:text-white transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <a>
+                <h1 class="text-lg font-bold text-[#111418] dark:text-white">
+                    {{current_product_type.category}} Products
+                </h1>
+
+            </div>
+        </header>
+        <main class="flex flex-col gap-4">
+            <div class="w-full pt-4 bg-background-light dark:bg-background-dark">
+                <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
+                    {% for pt in product_types %}
+                    <a href="{% url "product_filter" pt.id %}">
+                        <button
+                            class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 transition-transform active:scale-95 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary">
+                            <span class="text-sm font-medium text-[#111418] dark:text-gray-200">{{pt.category}}</span>
+                        </button>    
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 pb-4">
+                {% for p in products %}
+                <div class="group flex flex-col gap-3 rounded-xl bg-white dark:bg-gray-900 p-2.5 shadow-sm border border-gray-100 dark:border-gray-800">
+
+                    <div class="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
+                        <a href="{% url "product_detail" p.id %}">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                            style="background-image: url('{% if p.image %}{{ p.image.url }}{% else %}/static/images/placeholder.png{% endif %}');">
+                        </div>
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <h3 class="line-clamp-2 text-sm font-bold text-[#111418] dark:text-white leading-tight">
+                            {{ p.title }}
+                        </h3>
+
+                        <p class="text-base font-bold text-primary">
+                            ₹{{ p.price }}
+                        </p>
+
+                        <a href="{% url "product_detail" p.id %}">
+                            <button
+                                class="mt-2 w-full rounded-lg bg-primary py-2.5 text-xs font-bold text-white transition-opacity hover:opacity-90 active:scale-[0.98]">
+                                Details
+                            </button>
+                        </a>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </main>
+        <nav
+            class="fixed bottom-0 left-0 z-50 w-full bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 pb-safe">
+            <div class="flex h-16 items-center justify-around px-8">
+                <a href="{% url "dashboard" %}">
+                    <button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+                        <span class="material-symbols-outlined fill-current text-[28px]">home</span>
+                        <span class="text-[10px] font-bold">Home</span>
+                    </button>
+                </a>
+                <a href="{% url "login" %}">
+                    <button
+                        class="flex flex-col items-center justify-center gap-1 w-full h-full text-[#617589] dark:text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-[28px]">person</span>
+                        <span class="text-[10px] font-medium">Account</span>
+                    </button>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

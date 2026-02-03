@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Seller Registration</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white font-display transition-colors duration-200">
+    <div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-4xl mx-auto">
+        <header
+            class="sticky top-0 z-10 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 md:px-8 pb-2 justify-start transition-colors duration-200">
+            <a href="{% url "dashboard" %}">
+                <button
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#111418] dark:text-white transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+            </a>
+            <h2
+                class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">
+                Become a Seller
+            </h2>
+        </header>
+        <main class="flex-1 px-4 md:px-8 py-2 pb-8">
+            <div class="flex flex-col gap-1 pb-6 pt-2 md:pb-8">
+                <h1
+                    class="text-[#181111] dark:text-white text-[28px] md:text-3xl font-bold leading-tight tracking-[-0.015em] text-left">
+                    Sell your used products in the campus
+                </h1>
+                <p class="text-[#181111]/70 dark:text-white/70 text-base font-normal leading-normal">
+                    Get rid of unused products
+                </p>
+            </div>
+            <form method="POST" enctype="multipart/form-data" class="flex flex-col gap-8">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-8 md:gap-y-6">
+
+                    <!-- Full Name -->
+                    <label class="flex flex-col">
+                        <p class="text-base font-medium pb-2">Full Name</p>
+                        <input name="name" type="text" placeholder="Jane Doe"
+                            class="form-input h-14 rounded-xl p-[15px]" />
+                    </label>
+
+                    <!-- Phone -->
+                    <label class="flex flex-col">
+                        <p class="text-base font-medium pb-2">Phone Number</p>
+                        <input name="phone" type="tel" placeholder="9876543210"
+                            class="form-input h-14 rounded-xl p-[15px]" />
+                    </label>
+
+                    <!-- Email -->
+                    <label class="flex flex-col">
+                        <p class="text-base font-medium pb-2">Email Address</p>
+                        <input name="email" type="email" placeholder="jane@example.com"
+                            class="form-input h-14 rounded-xl p-[15px]" />
+                    </label>
+
+                    <!-- Password -->
+                    <div class="flex flex-col">
+                        <p class="text-base font-medium pb-2">Password</p>
+                        <div class="relative">
+                            <input name="password" type="password" placeholder="Create a secure password"
+                                class="form-input h-14 rounded-xl p-[15px] pr-12" />
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <label class="flex flex-col md:col-span-2">
+                        <p class="text-base font-medium pb-2">Physical Address</p>
+                        <textarea name="address" placeholder="Street, City, Zip Code"
+                            class="form-textarea min-h-[80px] rounded-xl p-[15px]"></textarea>
+                    </label>
+
+                    <!-- ID Proof -->
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <p class="text-base font-medium">ID Proof Image</p>
+
+                        <label
+                            class="relative flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer">
+                            <input name="id_proof" type="file" accept="image/*" class="hidden" />
+                            <span>Click to upload or drag & drop</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="flex flex-col items-center gap-4 mt-6">
+                    <button type="submit" class="w-full md:min-w-[320px] bg-primary text-white py-4 rounded-xl">
+                        Register as Seller
+                    </button>
+                </div>
+            </form>
+
+        </main>
+    </div>
+</body>
+
+</html>

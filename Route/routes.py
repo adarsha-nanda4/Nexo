@@ -5,16 +5,20 @@ from . import productviews as pu
 from . import sellerviews as su
 from . import adminviews as au
 from . import loginviews as lu
+from . import views as vu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',pu.home,name='dashboard'),
+    path('',vu.dashboard,name='dashboard'),
     path('login/',lu.seller_login,name='login'),
     path('logout/',lu.seller_logout,name='logout'),
 
-    path('product_detail/<int:pid>/',pu.product_detail,name='product_detail'),
+    path('product_filter/<str:cat>/',pu.p_filter,name='product_filter'),
+    path('product_search/',pu.p_search,name='product_search'),
 
-    path('seller/registration/',su.registration,name='registration'),
+    path('product_detail/<int:pid>/',pu.p_detail,name='product_detail'),
+
+    path('seller/registration/',lu.registration,name='registration'),
     path('seller/profile/',su.profile,name='profile'),
     
 ]

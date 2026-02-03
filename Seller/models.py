@@ -11,4 +11,4 @@ class Seller(AbstractUser):
     is_verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.username
+        return str(f"{self.username} - {self.name}")

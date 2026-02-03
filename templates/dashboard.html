@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nexo Red Product Home</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E53935",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-[80px]">
+        <header
+            class="sticky top-0 z-50 bg-white/95 dark:bg-[#101922]/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+            <div class="flex flex-col gap-4 p-4 pb-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+                        </div>
+                        <h2 class="text-xl font-bold tracking-tight text-[#111418] dark:text-white">Nexo</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="{% url "login" %}">
+                            <button
+                                class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#111418] dark:text-white transition-colors">
+                                <span class="material-symbols-outlined">person</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <form class="flex w-full items-center rounded-xl bg-[#f0f2f4] dark:bg-gray-800 px-3 h-11 transition-colors"
+                     method="get" action="{% url 'product_search' %}">
+                    <input
+                        class="flex-1 bg-transparent px-3 text-base text-[#111418] dark:text-white placeholder-[#617589] dark:placeholder-gray-500 focus:outline-none border-none focus:ring-0" name="q"
+                        placeholder="Search for shoes, tech..." />
+                    <button><span class="material-symbols-outlined text-[#617589] dark:text-gray-400">search</span></button>
+                </form>
+            </div>
+        </header>
+        <main class="flex flex-col gap-6">
+            <div class="px-4 pt-2">
+                <div class="relative flex min-h-[320px] w-full flex-col items-center justify-end overflow-hidden rounded-2xl p-6 text-center shadow-lg" data-alt="Vibrant abstract gradient background with warm red hues representing summer energy" style='background-image: linear-gradient(to bottom, rgba(229, 57, 53, 0.2) 0%, rgba(66, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxFX6YO55j5WdDzLKuy1PSnqwXj8lW0hoMN5mQeNKAeKkeHy0FG5zJ5eVUSYUSCrMif1dpGfW1a4JhXS0ahPTQSIz8Fa5kPx-Vl-YWYpe4y18dd13mbMIcHMMG0OjVy1qGMWkjuM4NqY2hFXmx3Ghz1qtnnM2f3H3C9At2DLjpoQUhByEvi7WR5w1rFnqJQdj5yv4B-yZwsmriSULcOoqZE353qq-nJmOeFxxM9_SkhCQv8_CTGZK56kq7bK6eR5dzFZTCJFWODoc"); background-size: cover; background-position: center;'>    
+                    <div class="relative z-10 flex flex-col items-center gap-3">
+                    <span class="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-white uppercase tracking-wider border border-white/30">Summer Sale</span>
+                    <h1 class="text-3xl font-black leading-tight text-white tracking-tight drop-shadow-sm">
+                        Red Hot Summer Deals
+                    </h1>
+                    <p class="max-w-[280px] text-sm font-medium text-gray-100">
+                        Ignite your style with 50% off on our fiery new arrivals.
+                    </p>
+                    <a href="{% url "registration" %}">
+                    <button class="mt-2 flex h-11 items-center justify-center rounded-full bg-primary px-8 text-sm font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-red-600">
+                        Become a Seller Here
+                    </button>
+                    </a>
+                </div>
+            </div>
+            </div>
+            <div class="w-full">
+                <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
+                    {% for pt in product_category %}
+                    <a href="{% url "product_filter" pt.id %}">
+                        <button
+                            class="flex h-10 w-30 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-primary text-white px-5 shadow-sm transition-transform active:scale-95">
+                            <span class="text-sm font-semibold">{{pt.category}}</span>
+                        </button>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="flex items-center justify-between px-4">
+                <h3 class="text-lg font-bold text-[#111418] dark:text-white">Popular Now</h3>
+                <!-- <button class="text-sm font-medium text-primary">See All</button> -->
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 pb-4">
+                {% for p in products %}
+                <div class="group flex flex-col gap-3 rounded-xl bg-white dark:bg-gray-900 p-2.5 shadow-sm border border-gray-100 dark:border-gray-800">
+                    <div class="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
+                        <a href="{% url "product_detail" p.id %}">
+                        <div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                            data-alt="Bright neon green running sneakers on a concrete surface"
+                            style="background-image: url('{{ p.image.url }}');">
+                        </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <h3 class="line-clamp-2 text-sm font-bold text-[#111418] dark:text-white leading-tight">{{p.title}}</h3>
+                        <p class="text-base font-bold text-primary">₹{{p.price}} <i class="fa fa-inr"></i></p>
+                        <a href="{% url "product_detail" p.id %}">
+                            <button
+                                class="mt-2 w-full rounded-lg bg-primary py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
+                                Details
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+        <nav
+            class="fixed bottom-0 left-0 z-50 w-full bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 pb-safe">
+            <div class="flex h-16 items-center justify-around px-8">
+                <a href="{% url "dashboard" %}">
+                    <button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+                        <span class="material-symbols-outlined fill-current text-[28px]">home</span>
+                        <span class="text-[10px] font-bold">Home</span>
+                    </button>
+                </a>
+                <a href="{% url "login" %}">
+                    <button
+                        class="flex flex-col items-center justify-center gap-1 w-full h-full text-[#617589] dark:text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-[28px]">person</span>
+                        <span class="text-[10px] font-medium">Account</span>
+                    </button>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+</body>
+
+</html>
