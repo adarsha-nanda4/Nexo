@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="light" lang="en">
 
@@ -65,7 +66,9 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <div class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
-                            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+                            <!-- {% comment %} <span class="material-symbols-outlined text-[24px]">shopping_bag</span> {% endcomment %} -->
+                            <span> <img src="{% static "img/logo2.png" %}" style="width:35px" alt=""></span>
+
                         </div>
                         <h2 class="text-xl font-bold tracking-tight text-[#111418] dark:text-white">Nexo</h2>
                     </div>
@@ -78,33 +81,40 @@
                         </a>
                     </div>
                 </div>
-                <form class="flex w-full items-center rounded-xl bg-[#f0f2f4] dark:bg-gray-800 px-3 h-11 transition-colors"
-                     method="get" action="{% url 'product_search' %}">
+                <form
+                    class="flex w-full items-center rounded-xl bg-[#f0f2f4] dark:bg-gray-800 px-3 h-11 transition-colors"
+                    method="get" action="{% url 'product_search' %}">
                     <input
-                        class="flex-1 bg-transparent px-3 text-base text-[#111418] dark:text-white placeholder-[#617589] dark:placeholder-gray-500 focus:outline-none border-none focus:ring-0" name="q"
-                        placeholder="Search for shoes, tech..." />
-                    <button><span class="material-symbols-outlined text-[#617589] dark:text-gray-400">search</span></button>
+                        class="flex-1 bg-transparent px-3 text-base text-[#111418] dark:text-white placeholder-[#617589] dark:placeholder-gray-500 focus:outline-none border-none focus:ring-0"
+                        name="q" placeholder="Search for shoes, tech..." />
+                    <button><span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400">search</span></button>
                 </form>
             </div>
         </header>
         <main class="flex flex-col gap-6">
             <div class="px-4 pt-2">
-                <div class="relative flex min-h-[320px] w-full flex-col items-center justify-end overflow-hidden rounded-2xl p-6 text-center shadow-lg" data-alt="Vibrant abstract gradient background with warm red hues representing summer energy" style='background-image: linear-gradient(to bottom, rgba(229, 57, 53, 0.2) 0%, rgba(66, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxFX6YO55j5WdDzLKuy1PSnqwXj8lW0hoMN5mQeNKAeKkeHy0FG5zJ5eVUSYUSCrMif1dpGfW1a4JhXS0ahPTQSIz8Fa5kPx-Vl-YWYpe4y18dd13mbMIcHMMG0OjVy1qGMWkjuM4NqY2hFXmx3Ghz1qtnnM2f3H3C9At2DLjpoQUhByEvi7WR5w1rFnqJQdj5yv4B-yZwsmriSULcOoqZE353qq-nJmOeFxxM9_SkhCQv8_CTGZK56kq7bK6eR5dzFZTCJFWODoc"); background-size: cover; background-position: center;'>    
+                <div class="relative flex min-h-[320px] w-full flex-col items-center justify-end overflow-hidden rounded-2xl p-6 text-center shadow-lg"
+                    data-alt="Vibrant abstract gradient background with warm red hues representing summer energy"
+                    style='background-image: linear-gradient(to bottom, rgba(229, 57, 53, 0.2) 0%, rgba(66, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxFX6YO55j5WdDzLKuy1PSnqwXj8lW0hoMN5mQeNKAeKkeHy0FG5zJ5eVUSYUSCrMif1dpGfW1a4JhXS0ahPTQSIz8Fa5kPx-Vl-YWYpe4y18dd13mbMIcHMMG0OjVy1qGMWkjuM4NqY2hFXmx3Ghz1qtnnM2f3H3C9At2DLjpoQUhByEvi7WR5w1rFnqJQdj5yv4B-yZwsmriSULcOoqZE353qq-nJmOeFxxM9_SkhCQv8_CTGZK56kq7bK6eR5dzFZTCJFWODoc"); background-size: cover; background-position: center;'>
                     <div class="relative z-10 flex flex-col items-center gap-3">
-                    <span class="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-white uppercase tracking-wider border border-white/30">Summer Sale</span>
-                    <h1 class="text-3xl font-black leading-tight text-white tracking-tight drop-shadow-sm">
-                        Red Hot Summer Deals
-                    </h1>
-                    <p class="max-w-[280px] text-sm font-medium text-gray-100">
-                        Ignite your style with 50% off on our fiery new arrivals.
-                    </p>
-                    <a href="{% url "registration" %}">
-                    <button class="mt-2 flex h-11 items-center justify-center rounded-full bg-primary px-8 text-sm font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-red-600">
-                        Become a Seller Here
-                    </button>
-                    </a>
+                        <span
+                            class="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-white uppercase tracking-wider border border-white/30">Summer
+                            Sale</span>
+                        <h1 class="text-3xl font-black leading-tight text-white tracking-tight drop-shadow-sm">
+                            Red Hot Summer Deals
+                        </h1>
+                        <p class="max-w-[280px] text-sm font-medium text-gray-100">
+                            Ignite your style with 50% off on our fiery new arrivals.
+                        </p>
+                        <a href="{% url "registration" %}">
+                            <button
+                                class="mt-2 flex h-11 items-center justify-center rounded-full bg-primary px-8 text-sm font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-red-600">
+                                Become a Seller Here
+                            </button>
+                        </a>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="w-full">
                 <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
@@ -124,17 +134,19 @@
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 pb-4">
                 {% for p in products %}
-                <div class="group flex flex-col gap-3 rounded-xl bg-white dark:bg-gray-900 p-2.5 shadow-sm border border-gray-100 dark:border-gray-800">
+                <div
+                    class="group flex flex-col gap-3 rounded-xl bg-white dark:bg-gray-900 p-2.5 shadow-sm border border-gray-100 dark:border-gray-800">
                     <div class="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
                         <a href="{% url "product_detail" p.id %}">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                            data-alt="Bright neon green running sneakers on a concrete surface"
-                            style="background-image: url('{{ p.image.url }}');">
-                        </div>
+                            <div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                                data-alt="Bright neon green running sneakers on a concrete surface"
+                                style="background-image: url('{{ p.image.url }}');">
+                            </div>
                         </a>
                     </div>
                     <div class="flex flex-col gap-1">
-                        <h3 class="line-clamp-2 text-sm font-bold text-[#111418] dark:text-white leading-tight">{{p.title}}</h3>
+                        <h3 class="line-clamp-2 text-sm font-bold text-[#111418] dark:text-white leading-tight">
+                            {{p.title}}</h3>
                         <p class="text-base font-bold text-primary">₹{{p.price}} <i class="fa fa-inr"></i></p>
                         <a href="{% url "product_detail" p.id %}">
                             <button
