@@ -7,6 +7,8 @@ from django.db import IntegrityError
 
 
 def registration(request):
+    if request.user.is_authenticated:
+        return redirect("seller_profile")
     if request.method == "POST":
         name = request.POST.get("name")
         phone = request.POST.get("phone")
@@ -41,6 +43,9 @@ def registration(request):
     return render(request,"login/s_registration.html")
 
 def seller_login(request):
+    if request.user.is_authenticated:
+        return redirect("seller_profile")
+
     if request.method == 'POST':
         print("reached here")
         phone = request.POST.get('phone')
@@ -52,9 +57,9 @@ def seller_login(request):
                 auth_login(request, user)
 
                 if user.is_staff:
-                    return redirect("dashboard")
+                    return redirect("seller_profile")
 
-                return redirect("dashboard")
+                return redirect("seller_profile")
         except Exception as e:
             messages.error(request, e)
 

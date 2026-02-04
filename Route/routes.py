@@ -19,6 +19,9 @@ urlpatterns = [
     path('product_detail/<int:pid>/',pu.p_detail,name='product_detail'),
 
     path('seller/registration/',lu.registration,name='registration'),
-    path('seller/profile/',su.profile,name='profile'),
+    path('seller/profile/',su.profile,name='seller_profile'),
+    path('seller/add_edit_product/',su.add_edit_product,name='add_edit_product'),
+    path("seller/add_edit_product/<int:product_id>/", su.add_edit_product, name="add_edit_product"),
+    path("seller/delete_product/<int:pk>/", su.delete_product, name="delete_product"),
     
 ]

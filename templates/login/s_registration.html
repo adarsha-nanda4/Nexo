@@ -130,11 +130,26 @@
                         <p class="text-base font-medium">ID Proof Image</p>
 
                         <label
-                            class="relative flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer">
-                            <input name="id_proof" type="file" accept="image/*" class="hidden" />
-                            <span>Click to upload or drag & drop</span>
+                            class="relative flex flex-col items-center justify-center w-full h-80 border-2 border-dashed rounded-xl cursor-pointer overflow-hidden">
+
+                            <input
+                                name="id_proof"
+                                type="file"
+                                accept="image/*"
+                                class="hidden"
+                                onchange="previewIDProof(event)" />
+
+                            <!-- Placeholder -->
+                            <span id="uploadText">Click to upload or drag & drop</span>
+
+                            <!-- Preview -->
+                            <img
+                                id="idPreview"
+                                class="absolute inset-0 w-full h-full object-cover hidden"
+                                alt="ID Proof Preview">
                         </label>
                     </div>
+
                 </div>
 
                 <!-- Submit -->
@@ -147,6 +162,20 @@
 
         </main>
     </div>
+    <script>
+        function previewIDProof(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const preview = document.getElementById("idPreview");
+            const text = document.getElementById("uploadText");
+
+            preview.src = URL.createObjectURL(file);
+            preview.classList.remove("hidden");
+            text.classList.add("hidden");
+        }
+    </script>
+
 </body>
 
 </html>
