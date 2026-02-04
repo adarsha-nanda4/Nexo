@@ -42,6 +42,7 @@ def registration(request):
 
 def seller_login(request):
     if request.method == 'POST':
+        print("reached here")
         phone = request.POST.get('phone')
         password = request.POST.get('password')
         try:
