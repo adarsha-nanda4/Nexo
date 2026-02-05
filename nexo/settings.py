@@ -19,7 +19,8 @@ if os.getenv("VERCEL") is None:
 # --------------------------------------------------
 SECRET_KEY = 'django-insecure-)rbobb8i7()a3dr0j087_j3_**zbtel)1ga!@=&n^*-fagnh^p'
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
+# DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -168,37 +169,37 @@ if not CLOUDINARY_URL:
 # --------------------------------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# --------------------------------------------------
-# PWA Settings
-# --------------------------------------------------
-PWA_APP_NAME = "Nexo"
-PWA_APP_DESCRIPTION = "Buy & Sell locally with Nexo"
-PWA_APP_THEME_COLOR = "#2563eb"
-PWA_APP_BACKGROUND_COLOR = "#ffffff"
-PWA_APP_DISPLAY = "standalone"
-PWA_APP_SCOPE = "/"
-PWA_APP_START_URL = "/"
-PWA_APP_ORIENTATION = "portrait"
-PWA_APP_STATUS_BAR_COLOR = "default"
+# # --------------------------------------------------
+# # PWA Settings
+# # --------------------------------------------------
+# PWA_APP_NAME = "Nexo"
+# PWA_APP_DESCRIPTION = "Buy & Sell locally with Nexo"
+# PWA_APP_THEME_COLOR = "#2563eb"
+# PWA_APP_BACKGROUND_COLOR = "#ffffff"
+# PWA_APP_DISPLAY = "standalone"
+# PWA_APP_SCOPE = "/"
+# PWA_APP_START_URL = "/"
+# PWA_APP_ORIENTATION = "portrait"
+# PWA_APP_STATUS_BAR_COLOR = "default"
 
-PWA_APP_ICONS = [
-    {
-        "src": "/static/icons/icon-192.png",
-        "sizes": "192x192",
-    },
-    {
-        "src": "/static/icons/icon-512.png",
-        "sizes": "512x512",
-    },
-]
+# PWA_APP_ICONS = [
+#     {
+#         "src": "/static/icons/icon-192.png",
+#         "sizes": "192x192",
+#     },
+#     {
+#         "src": "/static/icons/icon-512.png",
+#         "sizes": "512x512",
+#     },
+# ]
 
-PWA_APP_SPLASH_SCREEN = [
-    {
-        "src": "/static/icons/icon-512.png",
-        "media": "(device-width: 320px)",
-    }
-]
+# PWA_APP_SPLASH_SCREEN = [
+#     {
+#         "src": "/static/icons/icon-512.png",
+#         "media": "(device-width: 320px)",
+#     }
+# ]
 
-PWA_SERVICE_WORKER_PATH = os.path.join(
-    BASE_DIR, "static", "serviceworker.js"
-)
+# PWA_SERVICE_WORKER_PATH = os.path.join(
+#     BASE_DIR, "static", "serviceworker.js"
+# )
