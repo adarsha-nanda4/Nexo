@@ -161,45 +161,35 @@ STORAGES = {
 # --------------------------------------------------
 CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
 
-if not CLOUDINARY_URL:
-    raise RuntimeError("CLOUDINARY_URL is not set")
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# --------------------------------------------------
-# Default PK
-# --------------------------------------------------
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# # --------------------------------------------------
-# # PWA Settings
-# # --------------------------------------------------
-# PWA_APP_NAME = "Nexo"
-# PWA_APP_DESCRIPTION = "Buy & Sell locally with Nexo"
-# PWA_APP_THEME_COLOR = "#2563eb"
-# PWA_APP_BACKGROUND_COLOR = "#ffffff"
-# PWA_APP_DISPLAY = "standalone"
-# PWA_APP_SCOPE = "/"
-# PWA_APP_START_URL = "/"
-# PWA_APP_ORIENTATION = "portrait"
-# PWA_APP_STATUS_BAR_COLOR = "default"
+PWA_APP_NAME = "Nexo"
+PWA_APP_DESCRIPTION = "Buy & Sell locally with Nexo"
+PWA_APP_THEME_COLOR = "#2563eb"
+PWA_APP_BACKGROUND_COLOR = "#ffffff"
+PWA_APP_DISPLAY = "standalone"
+PWA_APP_SCOPE = "/"
+PWA_APP_START_URL = "/"
+PWA_APP_ORIENTATION = "portrait"
+PWA_APP_STATUS_BAR_COLOR = "default"
 
-# PWA_APP_ICONS = [
-#     {
-#         "src": "/static/icons/icon-192.png",
-#         "sizes": "192x192",
-#     },
-#     {
-#         "src": "/static/icons/icon-512.png",
-#         "sizes": "512x512",
-#     },
-# ]
+PWA_APP_ICONS = [
+    {
+        "src": "/static/icons/icon-192.png",
+        "sizes": "192x192"
+    },
+    {
+        "src": "/static/icons/icon-512.png",
+        "sizes": "512x512"
+    }
+]
 
-# PWA_APP_SPLASH_SCREEN = [
-#     {
-#         "src": "/static/icons/icon-512.png",
-#         "media": "(device-width: 320px)",
-#     }
-# ]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        "src": "/static/icons/icon-512.png",
+        "media": "(device-width: 320px)"
+    }
+]
 
-# PWA_SERVICE_WORKER_PATH = os.path.join(
-#     BASE_DIR, "static", "serviceworker.js"
-# )
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "static", "serviceworker.js")
