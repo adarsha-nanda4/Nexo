@@ -10,6 +10,7 @@ from . import views as vu
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',vu.dashboard,name='dashboard'),
+    path('offline/',vu.offline,name='offline'),
     path('login/',lu.seller_login,name='login'),
     path('logout/',lu.seller_logout,name='logout'),
 

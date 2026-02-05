@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     
     "cloudinary", 
     "cloudinary_storage",
+    "pwa",
 
 
     'Seller',
@@ -133,3 +134,32 @@ STORAGES = {
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+# PWA Settings
+PWA_APP_NAME = 'Nexo'
+PWA_APP_DESCRIPTION = "Buy Sell Used Products"
+PWA_APP_THEME_COLOR = '#0A0302'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/logo160.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/logo160.png',
+        'sizes': '160x160'
+    }
+]
+
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
