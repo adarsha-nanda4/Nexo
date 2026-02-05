@@ -8,3 +8,7 @@ def dashboard(request):
         "product_category":ProductType.objects.all(),
     }
     return render(request,"dashboard.html",context)
+
+
+def offline(request):
+    return render(request, "offline.html")
