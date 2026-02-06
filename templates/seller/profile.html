@@ -51,12 +51,13 @@
 </head>
 
 <body class="font-display bg-background-light dark:bg-background-dark text-[#181111] dark:text-white pb-24">
+    <a href="{% url "dashboard" %}">
     <div
         class="sticky top-0 z-50 flex items-center bg-white dark:bg-[#2a1a1a] p-4 border-b border-[#e6dbdb] dark:border-[#3a2a2a] justify-between shadow-sm">
-        <div class="text-[#181111] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#3a2a2a] cursor-pointer"
-            onclick="window.history.back()">
+        <div class="text-[#181111] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#3a2a2a] cursor-pointer">
             <span class="material-symbols-outlined">arrow_back</span>
         </div>
+    </a>
         <h2
             class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
             Seller Dashboard</h2>
