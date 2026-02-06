@@ -77,11 +77,15 @@
         <main class="flex flex-col gap-4">
             <div class="w-full pt-4 bg-background-light dark:bg-background-dark">
                 <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
+                    <button
+                        class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-primary dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 transition-transform active:scale-95 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary">
+                        <span class="text-sm font-medium text-white dark:text-gray-200">{{current_product_type.category}}</span>
+                    </button>    
                     {% for pt in product_types %}
                     <a href="{% url "product_filter" pt.id %}">
                         <button
                             class="flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 transition-transform active:scale-95 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary">
-                            <span class="text-sm font-medium text-[#111418] dark:text-gray-200">{{pt.category}}</span>
+                            <span class="text-sm font-medium text-black dark:text-gray-200">{{pt.category}}</span>
                         </button>    
                     </a>
                     {% endfor %}

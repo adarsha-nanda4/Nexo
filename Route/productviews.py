@@ -7,7 +7,7 @@ from django.db.models.functions import Random
 def p_filter(request,cat):
     context={
         "products":Product.objects.filter(category=cat).order_by(Random()),
-        "product_types":ProductType.objects.all().exclude(id=cat).order_by(Random()),
+        "product_types":ProductType.objects.all().exclude(id=cat),
         "current_product_type":ProductType.objects.get(id=cat),
     }
     return render(request,"product/p_filter.html",context)

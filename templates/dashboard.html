@@ -123,10 +123,14 @@
             </div>
             <div class="w-full">
                 <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
+                    <button
+                        class="flex h-10 w-30 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-primary text-white px-5 shadow-sm transition-transform active:scale-95">
+                        <span class="text-sm font-semibold">All</span>
+                    </button>
                     {% for pt in product_category %}
                     <a href="{% url "product_filter" pt.id %}">
                         <button
-                            class="flex h-10 w-30 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-primary text-white px-5 shadow-sm transition-transform active:scale-95">
+                            class="flex h-10 w-30 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-white text-black px-5 shadow-sm transition-transform active:scale-95">
                             <span class="text-sm font-semibold">{{pt.category}}</span>
                         </button>
                     </a>
