@@ -96,21 +96,24 @@
                             class="material-symbols-outlined text-[#617589] dark:text-gray-400">search</span></button>
                 </form>
             </div>
+
         </header>
+
         <main class="flex flex-col gap-6">
             <div class="px-4 pt-2">
                 <div class="relative flex min-h-[320px] w-full flex-col items-center justify-end overflow-hidden rounded-2xl p-6 text-center shadow-lg"
                     data-alt="Vibrant abstract gradient background with warm red hues representing summer energy"
-                    style='background-image: linear-gradient(to bottom, rgba(229, 57, 53, 0.2) 0%, rgba(66, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxFX6YO55j5WdDzLKuy1PSnqwXj8lW0hoMN5mQeNKAeKkeHy0FG5zJ5eVUSYUSCrMif1dpGfW1a4JhXS0ahPTQSIz8Fa5kPx-Vl-YWYpe4y18dd13mbMIcHMMG0OjVy1qGMWkjuM4NqY2hFXmx3Ghz1qtnnM2f3H3C9At2DLjpoQUhByEvi7WR5w1rFnqJQdj5yv4B-yZwsmriSULcOoqZE353qq-nJmOeFxxM9_SkhCQv8_CTGZK56kq7bK6eR5dzFZTCJFWODoc"); background-size: cover; background-position: center;'>
+                    style='background-image: linear-gradient(to bottom, rgba(229, 57, 53, 0.2) 0%, rgba(66, 0, 0, 0.8) 100%), url(""); background-size: cover; background-position: center;'>
                     <div class="relative z-10 flex flex-col items-center gap-3">
                         <span
-                            class="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-white uppercase tracking-wider border border-white/30">Summer
-                            Sale</span>
+                            class="inline-block rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-bold text-white uppercase tracking-wider border border-white/30">NEXO
+                            </span>
                         <h1 class="text-3xl font-black leading-tight text-white tracking-tight drop-shadow-sm">
-                            Red Hot Summer Deals
+                             Buy Smart, Sell Fast
+                          
                         </h1>
                         <p class="max-w-[280px] text-sm font-medium text-gray-100">
-                            Ignite your style with 50% off on our fiery new arrivals.
+               Find the best deals on quality used products.
                         </p>
                         <a href="{% url "registration" %}">
                             <button
@@ -121,6 +124,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="w-full">
                 <div class="flex gap-3 overflow-x-auto px-4 pb-2 no-scrollbar">
                     {% for pt in product_category %}
