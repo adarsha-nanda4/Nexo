@@ -82,6 +82,19 @@
                 <p class="text-[#181111]/70 dark:text-white/70 text-base font-normal leading-normal">
                     Get rid of unused products
                 </p>
+
+                {% if acerrors %}
+                <p class="text-red-500 font-normal leading-normal">
+                    Mail or Phone already exist !
+                </p>
+                {% endif %}
+
+                {% if fileerrors %}
+                <p class="text-red-500 font-normal leading-normal">
+                    File uplaod error !
+                </p>
+                {% endif %}
+                
             </div>
             <form method="POST" enctype="multipart/form-data" class="flex flex-col gap-8">
                 {% csrf_token %}

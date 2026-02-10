@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,update_session_auth_hash
 from django.db import IntegrityError
 from Product.models import Product,ProductType
 from django.contrib.auth.decorators import login_required
@@ -9,30 +9,31 @@ Seller = get_user_model()
 
 @login_required(login_url='login')
 def profile(request):
-    try:
-        seller = Seller.objects.get(id=request.user.id)
-    except Seller.DoesNotExist:
-        messages.error(request, "Seller profile not found.")
-        return redirect("seller_login")
+    seller = request.user  # ✅ already the Seller
 
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         address = request.POST.get("address")
+        password = request.POST.get("password")
 
-        # Update only if value is provided
         seller.name = name.strip() if name else seller.name
         seller.email = email.strip() if email else seller.email
         seller.address = address.strip() if address else seller.address
 
+        if password:
+            seller.set_password(password)              
+            update_session_auth_hash(request, seller)  
+
         seller.save()
         messages.success(request, "Profile updated successfully.")
-        return redirect("seller_profile")
-    context={
-        "seller":seller,
-        "products":Product.objects.filter(seller=seller)
+        return redirect("seller_profile")  
+
+    context = {
+        "seller": seller,
+        "products": Product.objects.filter(seller=seller),
     }
-    return render(request,"seller/profile.html",context)
+    return render(request, "seller/profile.html", context)
 
 
 @login_required(login_url="login")
